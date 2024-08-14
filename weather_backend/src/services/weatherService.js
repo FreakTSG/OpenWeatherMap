@@ -27,9 +27,12 @@ const getWeatherData = async (cityId) => {
   
       console.log('API Response:', response.data); // Log da resposta da API
   
-      const temperatureInCelsius = response.data.main.temp - 273.15;
+      
       const weatherData = {
-        temperature: temperatureInCelsius.toFixed(2),
+        temperature_min: response.data.main.temp_min,
+        temperature_max: response.data.main.temp_max,
+        temperature: response.data.main.temp,
+
         description: response.data.weather[0].description
       };
   
