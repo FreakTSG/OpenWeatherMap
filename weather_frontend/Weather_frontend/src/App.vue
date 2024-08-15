@@ -1,28 +1,9 @@
 <template>
-  <div class="app">
-    <h1>Weather Dashboard</h1>
-    <button @click="toggleDarkMode">
-      <img :src="isDarkMode ? lightModeIcon : darkModeIcon" alt="Toggle Dark Mode" />
-    </button>
-    <div class="widgets">
-      <WeatherWidget v-for="city in cities" :key="city" :city="city" :is-dark-mode="isDarkMode"/>
-    </div>
-  </div>
+  <router-view />
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import WeatherWidget from './components/WeatherWidget.vue';
 
-import lightModeIcon from '@/assets/sun.png';
-import darkModeIcon from '@/assets/moon.png';
-
-const cities = ['lisbon', 'leiria', 'coimbra', 'porto', 'faro'];
-const isDarkMode = ref(false);
-
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value;
-};
 </script>
 
 <style scoped>
@@ -75,14 +56,14 @@ const toggleDarkMode = () => {
 button {
   margin-top: 10px;
   padding: 8px;
-  background-color: transparent; /* Transparent background */
-  border: none; /* Remove default border */
+  background-color: transparent; 
+  border: none; 
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 button img {
-  width: 30px; /* Set the width of the icon */
-  height: 30px; /* Set the height of the icon */
+  width: 30px; 
+  height: 30px; 
 }
 </style>

@@ -40,7 +40,16 @@ const getWeatherData = async (cityId) => {
       return weatherData;
     } catch (error) {
       console.error('Error fetching weather data:', error.message); 
-      throw new Error('Failed to fetch weather data');
+      if (error.response) {
+        if (error.response.status === 401) {
+          throw new Error('Invalid API key');
+        }
+        throw new Error(`API Error: ${error.response.data.message}`);
+      } else if (error.request) {
+        throw new Error('No response received from API');
+      } else {
+        throw new Error('Error setting up API request');
+      }
     }
   };
   
