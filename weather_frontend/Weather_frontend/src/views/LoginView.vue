@@ -1,13 +1,32 @@
 <template>
-  <div class="login-container">
-    <h1>Login</h1>
-    <form @submit.prevent="login">
-      <input v-model="username" placeholder="Username" />
-      <input v-model="password" type="password" placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
-    <button @click="register">Register</button>
-  </div>
+  <v-container class="d-flex justify-center align-center fill-height">
+    <v-card class="pa-8" max-width="500">
+      <v-card-title class="justify-center">Login</v-card-title>
+      <v-card-text>
+        <v-form @submit.prevent="login">
+          <v-text-field
+            v-model="username"
+            label="Username"
+            prepend-icon="mdi-account"
+            outlined
+            required
+            class="input-field"
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            label="Password"
+            prepend-icon="mdi-lock"
+            type="password"
+            outlined
+            required
+            class="input-field"
+          ></v-text-field>
+          <v-btn class="mt-4" color="primary" type="submit" block>Login</v-btn>
+        </v-form>
+        <v-btn @click="register" class="mt-4" color="secondary" block>Register</v-btn>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script setup>
@@ -74,21 +93,20 @@ const register = async () => {
 </script>
 
 <style scoped>
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+.v-container {
+  min-height: 100vh; 
+  min-width: 100vw;  
+  background-color: #f0f4f8;
+  padding: 16px; 
 }
-input {
-  margin: 8px 0;
-  padding: 8px;
-  width: 200px;
+
+
+.input-field {
+  width: 100%; 
 }
-button {
-  padding: 8px;
-  width: 100px;
-  margin: 5px;
+
+.v-card {
+  width: 100%;
+  max-width: 500px; 
 }
 </style>

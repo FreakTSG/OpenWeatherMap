@@ -15,15 +15,15 @@
   min-height: 100vh;
   background-color: whitesmoke;
   color: black;
-  padding: 16px;
+  
   text-align: center;
-  box-sizing: border-box;
+
   width:auto;
 }
 
 .dark-mode .app {
-  background-color: #181818; /* Background color for dark mode */
-  color: #ffffff; /* Text color for dark mode */
+  background-color: #181818; 
+  color: #ffffff; 
 }
 
 .widgets {

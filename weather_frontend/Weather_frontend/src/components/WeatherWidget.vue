@@ -11,7 +11,18 @@
         <p>
           <strong>Description:</strong> {{ weather.description }}
         </p>
+        <!-- Details button -->
+        <button @click="toggleDetails">{{ showDetails ? 'Hide Details' : 'Show Details' }}</button>
+
+<!-- Additional weather details -->
+<div v-if="showDetails" class="details">
+        <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+        <p><strong>Wind Direction:</strong> {{ weather.wind_direction }}°</p>
+        <p><strong>Pressure:</strong> {{ weather.pressure }} hPa</p>
+        <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
       </div>
+</div>
+    
       <p v-else>Loading...</p>
     </div>
   </template>
@@ -33,6 +44,7 @@
   });
   
   const weather = ref(null);
+  const showDetails = ref(false);
   
   const cityName = computed(() => {
     return props.city.charAt(0).toUpperCase() + props.city.slice(1);
@@ -46,6 +58,12 @@
       console.error('Error fetching weather data:', error);
     }
   };
+
+  // Toggle details visibility
+const toggleDetails = () => {
+  showDetails.value = !showDetails.value;
+};
+
   
 
   const weatherIcon = computed(() => {

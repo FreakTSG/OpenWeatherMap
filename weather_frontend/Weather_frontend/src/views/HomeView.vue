@@ -8,7 +8,7 @@ const isDarkMode = ref(false);
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
-  document.body.classList.toggle('dark-mode', isDarkMode.value); // Toggle dark-mode class on the body
+  document.body.classList.toggle('dark-mode', isDarkMode.value); 
 };
 </script>
 
@@ -25,6 +25,33 @@ const toggleDarkMode = () => {
   </div>
 </template>
 <style scoped>
+:root {
+  --color-background-light: aliceblue; 
+  --color-text-light: aqua; 
+  --color-border-light: #ccc; 
+
+  --color-background-dark: #181818; 
+  --color-text-dark: #ffffff; 
+  --color-border-dark: #444; 
+}
+
+
+
+
+body {
+  background-color: var(--color-background-light); 
+  color: var(--color-text-light);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.dark-mode body {
+  background-color: var(--color-background-dark); 
+  color: var(--color-text-dark); 
+}
+
+
 .app {
   display: flex;
   flex-direction: column;
@@ -64,10 +91,7 @@ button:hover {
   color: #ffffff; 
 }
 
-.dark-mode .app {
-  background-color: #181818; 
-  color: #ffffff; 
-}
+
 
 .widgets {
   display: flex;

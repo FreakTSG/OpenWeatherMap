@@ -33,6 +33,12 @@ const getWeatherData = async (cityId) => {
         temperature_max: response.data.main.temp_max,
         temperature: response.data.main.temp,
 
+        pressure: response.data.main.pressure,
+        humidity: response.data.main.humidity,
+        wind_speed: response.data.wind.speed,
+        wind_direction: response.data.wind.deg,
+        wind_gust: response.data.wind.gust,
+
         description: response.data.weather[0].description
       };
   
