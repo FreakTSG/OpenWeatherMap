@@ -12,7 +12,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 require('dotenv').config();
-console.log("API_KEY:", process.env.API_KEY); // Verifica se a chave está sendo carregada corretamente
+console.log("API_KEY:", process.env.API_KEY); 
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

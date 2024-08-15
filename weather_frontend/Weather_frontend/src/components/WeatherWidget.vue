@@ -1,5 +1,5 @@
 <template>
-    <div class="weather-widget">
+    <div :class="['weather-widget', props.isDarkMode ? 'dark-mode' : '']">
       <h3>{{ cityName }}</h3>
       <div v-if="weather">
         <img :src="weatherIcon" :alt="weather.description" class="weather-icon" />
@@ -19,13 +19,17 @@
   <script setup>
   import { ref, onMounted, computed } from 'vue';
   import axios from 'axios';
-  import cloudyImage from '@/assets/cloudy.png';  // Import the local image
+  import cloudyImage from '@/assets/cloudy.png';  
   
   const props = defineProps({
     city: {
       type: String,
       required: true,
     },
+    isDarkMode: {
+    type: Boolean,
+    required: true,
+  }
   });
   
   const weather = ref(null);
@@ -43,7 +47,7 @@
     }
   };
   
-  // Map the weather description to the corresponding Flaticon SVG URL
+
   const weatherIcon = computed(() => {
     if (!weather.value) return '';
   
@@ -61,7 +65,7 @@
   
   onMounted(() => {
     fetchWeather();
-    setInterval(fetchWeather, 1800000); // Update every 30 minutes
+    setInterval(fetchWeather, 1800000); 
   });
   </script>
   
@@ -74,13 +78,34 @@
     text-align: center;
     color: black;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: skyblue;
+    transition: background-color 0.3s, color 0.3s;
   }
+  
+  .dark-mode {
+  background-color: #181818; 
+  color: #ffffff; 
+}
   
   .weather-icon {
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
   }
+
+  button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+  button:hover {
+  background-color: #555;
+}
   </style>
   

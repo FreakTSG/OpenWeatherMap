@@ -25,7 +25,7 @@ const getWeatherData = async (cityId) => {
         }
       });
   
-      console.log('API Response:', response.data); // Log da resposta da API
+      console.log('API Response:', response.data); 
   
       
       const weatherData = {
@@ -39,7 +39,7 @@ const getWeatherData = async (cityId) => {
       cache.set(cacheKey, weatherData);
       return weatherData;
     } catch (error) {
-      console.error('Error fetching weather data:', error.message); // Log do erro
+      console.error('Error fetching weather data:', error.message); 
       throw new Error('Failed to fetch weather data');
     }
   };

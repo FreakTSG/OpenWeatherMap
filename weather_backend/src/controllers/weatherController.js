@@ -11,7 +11,7 @@ const getWeather = async (req, res) => {
     const weatherData = await weatherService.getWeatherData(cityId);
     res.json(weatherData);
   } catch (error) {
-    console.error('Error in getWeather controller:', error.message); // Log do erro no controlador
+    console.error('Error in getWeather controller:', error.message); 
     res.status(500).json({ error: 'Error fetching weather data' });
   }
 };
