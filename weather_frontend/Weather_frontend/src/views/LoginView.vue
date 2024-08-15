@@ -97,6 +97,11 @@ const register = async () => {
   min-height: 100vh; 
   min-width: 100vw;  
   background-color: #f0f4f8;
+
+  background-image: url('@/assets/sky.jpg'); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
   padding: 16px; 
 }
 

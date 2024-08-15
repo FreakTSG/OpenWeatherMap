@@ -11,10 +11,10 @@
         <p>
           <strong>Description:</strong> {{ weather.description }}
         </p>
-        <!-- Details button -->
+        
         <button @click="toggleDetails">{{ showDetails ? 'Hide Details' : 'Show Details' }}</button>
 
-<!-- Additional weather details -->
+
 <div v-if="showDetails" class="details">
         <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
         <p><strong>Wind Direction:</strong> {{ weather.wind_direction }}°</p>
@@ -59,7 +59,7 @@
     }
   };
 
-  // Toggle details visibility
+ 
 const toggleDetails = () => {
   showDetails.value = !showDetails.value;
 };
