@@ -50,6 +50,14 @@ const logout = () => {
 }
 
 
+.logout-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 
 
 body {
