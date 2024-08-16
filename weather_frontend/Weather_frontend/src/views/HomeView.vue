@@ -1,14 +1,24 @@
 <script setup>
 import WeatherWidget from '../components/WeatherWidget.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'; 
+import { useCounterStore } from '../stores/counter'; 
 import lightModeIcon from '@/assets/sun.png';
 import darkModeIcon from '@/assets/moon.png';
 const cities = ['lisbon', 'leiria', 'coimbra', 'porto', 'faro'];
 const isDarkMode = ref(false);
 
+const router = useRouter(); 
+const store = useCounterStore(); 
+
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
   document.body.classList.toggle('dark-mode', isDarkMode.value); 
+};
+
+const logout = () => {
+  store.logout();
+  router.push('/login'); 
 };
 </script>
 
@@ -22,6 +32,10 @@ const toggleDarkMode = () => {
     <div class="widgets">
       <WeatherWidget v-for="city in cities" :key="city" :city="city" :is-dark-mode="isDarkMode" />
     </div>
+    <button @click="logout" class="logout-button">
+      Logout
+
+    </button>
   </div>
 </template>
 <style scoped>
